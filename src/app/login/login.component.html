@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif; /* Choose a suitable font family */
+      background-color: #f8f9fa; /* Light background color for the entire page */
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* Hide horizontal scrollbar */
+    }
+
+    .auth-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 94.1vh; /* Full viewport height */
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7); /* Transparent green background */
+      background-image: url('https://logowik.com/content/uploads/images/ocp-group9312.logowik.com.webp');
+      background-blend-mode: overlay;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      overflow: hidden; /* Prevent vertical scrollbar */
+    }
+
+    .card {
+      width: 100%;
+      max-width: 400px; /* Adjust based on your design */
+      border: 1px solid #28a745; /* Green border for cards */
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+    }
+
+    .card-header {
+      background-color: #28a745; /* Green header background */
+      color: #fff; /* White text color */
+      font-size: 1.5rem;
+      padding: 10px;
+      text-align: center;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .form-label {
+      color: #28a745; /* Green label text color */
+      font-weight: bold;
+    }
+
+    .form-control {
+      border: 1px solid #28a745; /* Green border for form inputs */
+      border-radius: 4px;
+      padding: 8px;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      border-color: #28a745;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      display: block;
+      width: 100%;
+      font-size: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+
+    .text-success {
+      color: #28a745; /* Green text color for success messages */
+    }
+  </style>
+</head>
+<body>
+<div class="auth-container">
+  <div class="card">
+    <div class="card-header">Authentification</div>
+    <div class="text-danger text-center"  *ngIf="errorMessage">{{errorMessage}}</div>
+    <div class="card-body">
+      <form [formGroup]="userFormGroup" (ngSubmit)="handleLogin()">
+        <div class="mb-3">
+          <label class="form-label">Nom d'utilisateur</label>
+          <input type="text" formControlName="username" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Mot de passe</label>
+          <input type="password" formControlName="password" class="form-control">
+        </div>
+        <div>
+          <button class="btn btn-success" type="submit">Connexion</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

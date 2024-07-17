@@ -1,0 +1,54 @@
+<div class="container">
+  <nav class="p-2 m-2 border border-info">
+    <button *ngIf="authService.hasRole('ADMIN')" class="btn btn btn-outline-info" (click)="handleNewService()">Ajouter service</button>
+  </nav>
+  <ng-template #errors>
+    <div class="text-danger">{{errorMessage}}</div>
+  </ng-template>
+  <div class="card mt-5" *ngIf="lesservices ;else errors">
+    <div class="card-header text-center">Les services disponibles</div>
+    <div class="card-body ">
+      <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchServices() " >
+        <div class="input-group">
+          <label class="input-group-text">Mot clé :</label>
+          <input type="text" class="form-control" formControlName="keyword">
+          <button class="btn btn-info">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+      </form >
+
+      <table class="table">
+        <thead class="shadow-lg">
+        <tr class=>
+          <th>id</th>
+          <th>nom</th>
+          <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let s of lesservices">
+          <td>{{s.id}}</td>
+          <td>{{s.nom}}</td>
+          <td *ngIf="authService.hasRole('ADMIN')">
+            <button (click)="handleDeleteService(s)" class="btn btn-danger" aria-label="Delete service">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+          <td *ngIf="authService.hasRole('ADMIN')">
+            <button (click)="handleEditService(s)" class="btn btn-success" aria-label="Edit service">
+              <i class="bi bi-file"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <ul class="nav nav-pills">
+        <li *ngFor="let item of [].constructor(this.totalPages); let i=index">
+          <a (click)="goToPage(i)" [ngClass]="i==currentPage?'btn-info':'btn-outline-info'" class="btn  ms-1 mt-1">{{i}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

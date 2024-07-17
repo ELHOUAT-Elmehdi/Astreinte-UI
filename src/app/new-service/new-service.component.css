@@ -1,0 +1,40 @@
+.container {
+  max-width: 600px;
+}
+
+.card {
+  border-radius: 0.75rem;
+}
+
+.card-header {
+  background-color: #3bdf62;
+  color: white;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.card-title {
+  margin-bottom: 0;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.form-control {
+  border-radius: 0.25rem;
+}
+
+.btn-primary {
+  background-color: #3bdf62;
+  border-color: #3bdf62;
+  border-radius: 0.25rem;
+}
+
+.btn-primary:disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.text-danger {
+  font-size: 0.875rem;
+}
